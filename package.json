@@ -2,9 +2,10 @@
   "name": "blog",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon ./index.js",
+    "start": "nodemon --inspect src/index.js",
+    "watch": "sass --embed-source-map --watch src/resources/scss/:src/public/css/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,9 +24,13 @@
   },
   "homepage": "https://github.com/dangkhoado43/blog-f8-nodejs#readme",
   "dependencies": {
-    "express": "^4.19.1"
+    "bootstrap": "^5.3.3",
+    "express": "^4.19.1",
+    "express-handlebars": "^7.1.2",
+    "sass": "^1.72.0"
   },
   "devDependencies": {
+    "morgan": "^1.10.0",
     "nodemon": "^3.1.0"
   }
 }
