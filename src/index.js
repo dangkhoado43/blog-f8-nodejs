@@ -1,7 +1,7 @@
+// import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+// import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js"
 'use strict';
 
-// import 'bootstrap/dist/css/bootstrap.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.js';
 
 const path = require('path');
 const express = require('express')
@@ -11,6 +11,8 @@ const app = express()
 const port = 3000
 
 app.use(express.static(path.join(__dirname, './public')))
+app.use('/css', express.static(path.join(__dirname, './node_modules/bootstrap/dist/css')))
+app.use('/js', express.static(path.join(__dirname, './node_modules/bootstrap/dist/js')))
 
 // HTTP logger
 app.use(morgan('combined'))
@@ -19,14 +21,16 @@ app.use(morgan('combined'))
 // extension of file is .hbs
 app.engine('.hbs', handlebars(
   {
-    defaultLayout: 'main', 
+    defaultLayout: 'main',
     extname: '.hbs',
-    encoding: 'utf8'
+    encoding: 'utf8',
+    // layoutsDir: path.join(__dirname, './resources/views/layouts'),
+    // partialsDir: path.join(__dirname, './resources/views/partials')
   }
 ));
 
 app.set('view engine', '.hbs');
-app.set('views', path.join(__dirname, './resources/views'));
+app.set('views', path.join(__dirname, './resources/views'))
 
 app.get('/', (req, res) => {
   res.render('home')
