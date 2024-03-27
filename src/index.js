@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, './public')));
 app.use(
     express.urlencoded({
         extended: true,
-    }),
+    })
 );
 
 app.use(express.json());
@@ -36,18 +36,16 @@ app.engine(
     handlebars({
         defaultLayout: 'main',
         extname: '.hbs',
-                                    encoding: 'utf8',
+        encoding: 'utf8',
 
         // layoutsDir: path.join(__dirname, './resources/views/layouts'),
         // partialsDir: path.join(__dirname, './resources/views/partials')
-    }),
+    })
 );
 
-                                        app.set('view engine', '.hbs');
+app.set('view engine', '.hbs');
 
-
-
-            app.set('views', path.join(__dirname, './resources/views'));
+app.set('views', path.join(__dirname, './resources/views'));
 
 // Routes init
 route(app);
