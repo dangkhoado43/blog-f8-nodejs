@@ -6,10 +6,15 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars').engine;
-const app = express();
-const port = 3000;
 
 const route = require('./routes');
+const db = require('./config/db');
+
+// Connect to DB
+db.connect();
+
+const app = express();
+const port = 3000;
 
 app.use(express.static(path.join(__dirname, './public')));
 // app.use('/public/css', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/css')))
