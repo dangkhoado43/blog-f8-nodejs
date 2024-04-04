@@ -5,6 +5,7 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
+const methodOverride = require('method-override');
 const handlebars = require('express-handlebars').engine;
 
 const route = require('./routes');
@@ -31,6 +32,9 @@ app.use(
 app.use(express.json());
 // XMLHttpRequest, fetch, axios, ...
 
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'));
+
 // HTTP logger
 // app.use(morgan('combined'))
 
@@ -42,7 +46,9 @@ app.engine(
         defaultLayout: 'main',
         extname: '.hbs',
         encoding: 'utf8',
-
+        helpers: {
+            sum: (a, b) => a + b,
+        },
         // layoutsDir: path.join(__dirname, 'resources', 'views', 'layouts'),
         // partialsDir: path.join(__dirname, 'resources', 'views', 'partials')
     })

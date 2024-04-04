@@ -1,7 +1,7 @@
 <div class='my-4 container'>
     <div class='row'>
         {{#each courses}}
-            <div class='col-sm-6 col-lg-4 my-2'>
+            <div class='col-sm-6 col-lg-4'>
                 <div class='card my-2 h-100'>
                     <a href='/courses/{{this.slug}}'>
                         <img
@@ -19,7 +19,7 @@
                                 {{this.name}}
                             </a>
                         </h5>
-                        <div>
+                        <div class='h-50'>
                             <p class='card-text'>{{this.description}}</p>
                         </div>
                         <div class='text-center'>

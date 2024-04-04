@@ -1,20 +1,15 @@
 const siteRouter = require('./site');
-const newsRouter = require('./news');
+const userRouter = require('./user');
+const coursesRouter = require('./courses');
+const blogRouter = require('./blog');
 
 function route(app) {
-    // app.use('/contact', siteRouter)
+    app.use('/user', userRouter);
+    app.use('/courses', coursesRouter);
 
-    app.use('/news', newsRouter);
+    app.use('/blog', blogRouter);
 
     app.use('/', siteRouter);
-
-    // app.get('/services', (req, res) => {
-    //     res.render('services')
-    // })
-
-    // app.get('/products', (req, res) => {
-    //     res.render('products')
-    // })
 
     // app.get('/search', (req, res) => {
     //     console.log(req.query)
